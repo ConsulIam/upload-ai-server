@@ -16,8 +16,12 @@ app.register(uploadVideoRoute)
 app.register(createTranscriptionRoute)
 app.register(generateAICompletionRoute)
 
+const host = ("RENDER" in process.env) ? `0.0.0.0` : `localhost`;
+const port = process.env.PORT || 11337;
+
 app.listen({
-    port: 11337
+    host: host,
+    port: port
 }).then(() => {
-    console.log("HTTP server running at port 11337!")
+    console.log("HTTP Server running on http://" + host + ":" + port)
 })
